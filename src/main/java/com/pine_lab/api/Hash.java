@@ -70,7 +70,7 @@ public class Hash {
         }
         String resultString = dataString.toString();
         String calculatedHash = calculateHmacSha256(resultString, secret).toUpperCase();
-        return receivedHash.equals(calculatedHash);
+        return receivedHash.equalsIgnoreCase(calculatedHash);
     }
 
     private String calculateHmacSha256(String data, String key)
