@@ -133,7 +133,7 @@ public class Payment {
         String returnHash = this.hash.encodedHash(requestBody);
         requestBody.put("ppc_DIA_SECRET", returnHash);
         requestBody.put("ppc_DIA_SECRET_TYPE", "sha256");
-        URL url = new URL(getApiUrl() + "PG/V2");
+        final URL url = new URL(getApiUrl() + "PG/V2");
         RequestBody formBody = new FormBody.Builder()
                 .add("ppc_DIA_SECRET", "" + requestBody.get("ppc_DIA_SECRET"))
                 .add("ppc_DIA_SECRET_TYPE", "" + requestBody.get("ppc_DIA_SECRET_TYPE"))
@@ -174,7 +174,7 @@ public class Payment {
     private String sendPOSTRequest(String uri, Map<String, Object> body, Map<String, String> headers)
             throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        URL url = new URL(uri);
+        final URL url = new URL(uri);
         String json = objectMapper.writeValueAsString(body);
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         RequestBody body2 = RequestBody.create(JSON, json);

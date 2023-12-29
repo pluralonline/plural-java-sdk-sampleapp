@@ -59,7 +59,7 @@ public class EMI {
     }
 
     private String sendPOSTRequest(String uri, Map<String, Object> body) throws IOException {
-        URL url = new URL(uri);
+        final URL url = new URL(uri);
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
         String json = objectMapper.writeValueAsString(body);
